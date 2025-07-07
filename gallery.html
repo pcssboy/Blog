@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honge's Gallery | </title>
+    <link rel="icon" href="icon/icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部导航栏 (与主站一致) -->
+        <div class="top-nav">
+            <nav>
+                <a href="index.html#home">返回博客</a>
+                <a href="index.html#timeline">时间轴</a>
+                <a href="index.html#categories">文章分类</a>
+                <a href="index.html#about">关于我</a>
+            </nav>
+            <div class="top-nav-right">
+                <div class="search-box">
+                    <input type="text" placeholder="搜索图片..." id="gallery-search">
+                    <button id="gallery-search-btn"><img src="icon/search-icon.png" alt="搜索"></button>
+                </div>
+                <button id="theme-toggle" class="theme-toggle">
+                    <img src="icon/icon-dark.svg" alt="切换主题">
+                </button>
+            </div>
+        </div>
+
+        <!-- 相册头部 -->
+        <header class="gallery-header">
+            <h1><i class="fas fa-camera-retro"></i> Honge's Gallery</h1>
+            <p class="gallery-description">这里是我的摄影作品和收藏的图片集，记录生活点滴与美好瞬间</p>
+        </header>
+
+        <!-- 相册主体 -->
+        <main class="gallery-main">
+            <!-- 分类筛选 -->
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="nature">自然风光</button>
+                <button class="filter-btn" data-filter="city">城市建筑</button>
+                <button class="filter-btn" data-filter="people">人物肖像</button>
+                <button class="filter-btn" data-filter="art">艺术创作</button>
+            </div>
+
+            <!-- 图片网格 -->
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- 图片将通过JavaScript动态加载 -->
+                <div class="loading">加载中...</div>
+            </div>
+
+            <!-- 分页控制 -->
+            <div class="gallery-pagination">
+                <button id="prev-page" disabled><i class="fas fa-chevron-left"></i> 上一页</button>
+                <span id="page-info">1 / 5</span>
+                <button id="next-page">下一页 <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </main>
+
+        <!-- 图片预览模态框 -->
+        <div class="gallery-modal" id="gallery-modal">
+            <span class="close-modal">&times;</span>
+            <img class="modal-content" id="modal-image">
+            <div class="modal-caption">
+                <h3 id="modal-title"></h3>
+                <p id="modal-description"></p>
+                <div class="modal-meta">
+                    <span id="modal-date"></span>
+                    <span id="modal-location"></span>
+                    <span id="modal-tags"></span>
+                </div>
+                <div class="modal-actions">
+                    <button id="download-btn"><i class="fas fa-download"></i> 下载</button>
+                    <button id="share-btn"><i class="fas fa-share-alt"></i> 分享</button>
+                </div>
+            </div>
+            <a class="modal-nav prev" id="prev-img">&#10094;</a>
+            <a class="modal-nav next" id="next-img">&#10095;</a>
+        </div>
+
+        <footer>
+            <p><img src="./icon/icp.png" alt="Logo" style="height: 20px; vertical-align: middle;">
+            Copyright&nbsp;&copy;&nbsp;2002 - <span id="current-year">2025</span> Honge Hub - &nbsp;<a href="https://fontawesome.com/search?ip=classic&s=solid&o=r">iCon</a>&nbsp;&amp;&nbsp;
+            Made&nbsp;by&nbsp;<a href="http://vske.top:81/" target="_blank">©宏哥网络工作室</a></p>
+        </footer>
+    </div>
+
+    <!-- JavaScript 文件 -->
+    <script src="js/theme.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>

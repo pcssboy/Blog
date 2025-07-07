@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<!-- 声明文档类型为HTML5 -->
+<html lang="zh-CN" data-theme="dark">
+<!-- 根元素，设置语言为简体中文，初始主题为dark(暗色) -->
+<head>
+    <!-- 文档头部，包含元数据和资源链接 -->
+    <meta charset="UTF-8"><!-- 设置字符编码为UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- 响应式视口设置，适配移动设备 -->
+    <title>Honge's Blog</title><!-- 页面标题 -->
+	<link rel="icon" href="icon/icon.png"><!-- 设置网站图标 -->
+    <link rel="stylesheet" href="css/style.css"><!-- 引入自定义样式表 -->	
+	<!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Highlight.js 代码高亮 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/[theme].min.css">    <!-- Highlight.js 代码高亮 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <!-- 可选：添加更多语言支持 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/sql.min.js"></script>
+</head>
+<body>
+    <!-- 文档主体内容 -->
+    <div class="container">
+        <!-- 主容器 -->
+    <div class="top-nav">
+    <!-- 顶部导航栏 -->
+    <nav>
+        <!-- 导航菜单 -->
+        <a href="index.html#home" class="active">主页</a>
+        <a href="index.html#timeline">时间轴</a>
+        <a href="index.html#categories">分类</a>
+        <a href="index.html#about">关于我</a>
+    </nav>
+    
+    <!-- 右侧功能区 -->
+    <div class="top-nav-right">
+        <!-- 搜索框 -->
+        <div class="search-box">
+            <input type="text" placeholder="搜索文章..." id="search-input">
+            <button id="search-button"><img src="icon/search-icon.png" alt="搜索"></button>
+        </div>
+        
+        <!-- 独立的主题切换按钮 -->
+        <button id="theme-toggle" class="theme-toggle">
+            <img src="icon/icon-dark.svg" alt="切换主题">
+        </button>
+       </div>
+     </div>      
+        
+        <header class="profile-header">
+            <!-- 个人资料头部 -->
+            <img src="icon/logo.png" alt="Honge头像" class="avatar">
+            <!-- 头像图片 -->
+            <h1>Honge's Blog</h1>
+            <!-- 博客标题 -->
+            <div class="intro">
+                <!-- 简介部分 -->
+                <span class="green-square">🟩</span> 你好！我是一名80后业余网络爱好者，喜欢学习和研究语言代码和运算逻辑。我会在博客中分享玩法教程和资源下载以及开源的项目。欢迎你的关注！
+                <!-- 个人介绍文本 -->
+
+						<!-- 联系方式 -->✅<i class="fa-solid fa-headphones"></i>
+						<div class="aboutinfo-contact">
+						<!-- 以下是从新打开一个空白网页下打开链接 -->   
+                        <a target="_blank" title="网站首页" href="home.html"><i class="fa fa-home fa-2x"></i></a>
+                        <a target="_blank" title="导航主页" href="article.html"><i class="fa fa-magnifying-glass fa-2x"></i></a>
+                        <a target="_blank" title="个人博客" href="resource.html"><i class="fa fa-blog fa-2x"></i></a>
+                        <a target="_blank" title="在线MD编辑器" href="timeline.html"><i class="fa-brands fa-markdown fa-2x"></i></a>
+                        <!-- 以下是在当前网页下打开链接 -->     
+                        <a title="资源下载" href="downloads.html"><i class="fa fa-download fa-2x"></i></a>
+                        <a title="个人相册" href="gallery.html"><i class="fa-solid fa-camera fa-2x"></i></a>
+                        <a title="时间轴" href="#timeline"><i class="fa-solid fa-timeline fa-2x"></i></a>
+                        <a title="音乐空间" href="music.html"><i class="fa-solid fa-headphones fa-2x"></i></a>						
+                        <a title="影视频道" href="home.html"><i class="fa fa-film fa-2x"></i></a>
+                        <a title="文章分类" href="#categories"><i class="fa fa-tags fa-2x"></i></a>	
+                        </div>
+        </header>
+        
+        <main>
+            <!-- 主要内容区域 -->
+            <section id="home" class="section">
+                <!-- 主页部分 -->
+                <h2 class="section-title">最新文章</h2>
+                <!-- 部分标题 -->
+                <div id="posts-container" class="posts-list">
+                    <!-- 文章列表容器 -->
+                    <div class="loading">加载中...</div>
+                    <!-- 加载状态提示 -->
+                </div>
+            </section>
+            
+            <section id="timeline" class="section" style="display:none;">
+                <!-- 时间轴部分，初始隐藏 -->
+                <h2 class="section-title">文章时间轴</h2>
+                <div id="timeline-container" class="timeline">
+                    <div class="loading">加载中...</div>
+                </div>
+            </section>
+            
+            <section id="categories" class="section" style="display:none;">
+                <!-- 分类部分，初始隐藏 -->
+                <h2 class="section-title">文章分类</h2>
+                <div class="categories-list">
+                    <!-- 分类列表容器 -->
+                </div>
+            </section>
+            
+            <section id="about" class="section" style="display:none;">
+                <!-- 关于我部分，初始隐藏 -->
+                <h2 class="section-title">关于我</h2>
+                <div class="about-content">
+                    <!-- 关于我内容 -->
+                    <img src="icon/logo3.png" alt="Honge头像" class="about-avatar">
+                    <!-- 头像图片 -->
+                    <div class="about-info">
+                        <!-- 个人信息 -->
+                        <h3>Honge's Hub</h3>
+                        <!-- 名字 -->
+                        <p><strong>身份:</strong> 个体鞋类创业者，80后网络爱好者，喜欢学习研究语言代码及运算逻辑和开源项目</p>
+                        <!-- 身份信息 -->
+                        <p><strong>兴趣:</strong> 喜欢语言，python，Java，VUE，JS编程、开源项目</p>
+                        <!-- 兴趣爱好 -->
+                        <p><strong>联系方式:</strong> QQ/WX：pcssboy  邮箱：pcssboy@me.com </p>
+                        <!-- 联系方式 -->
+                        <p><strong>现居地址:</strong> 浙江省.温州市.鹿城区.维多利亚港</p>
+						
+                        <!-- 联系方式 -->
+						<!-- 社交媒体链接 ，按钮式已被注释掉了，需要显示删除注释符就行<!-- 注释符-->
+                        <!--<div class="social-links">   
+                            <a href="#" class="social-link">GitHub</a>
+							<a href="#" class="social-link">Xcorp</a>
+                            <a href="#" class="social-link">Twitter</a>
+                            <a href="#" class="social-link">Mastodon</a>
+							<a href="#" class="social-link">Telegram</a>
+                            <a href="#" class="social-link">Email</a>-->
+							
+			            <!-- 添加社交按钮 -->
+                        <div class="social-buttons">			
+			            <!-- X新鲜事按钮 -->
+                        <a href="https://x.com/" class="social-button x" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-x corp"></i> Xcorp
+                        </a>
+                        <!-- GitHub按钮 -->
+                        <a href="https://github.com/yourusername" class="social-button github" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <!-- Twitter/X按钮 -->
+                        <a href="https://twitter.com/yourhandle" class="social-button twitter" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-twitter"></i> Twitter
+                        </a> 
+                        <!-- Mastodon按钮（联邦宇宙） -->
+                        <a href="https://mastodon.social/@yourhandle" class="social-button mastodon" target="_blank" rel="me noopener noreferrer">
+                        <i class="fab fa-mastodon"></i> Mastodon
+                        </a>
+                        <!-- Telegram按钮 -->
+                        <a href="https://t.me/yourchannel" class="social-button telegram" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-telegram"></i> Telegram
+                        </a>
+                        <!-- QQ按钮 -->
+                        <a href="https://connect.qq.com/" class="social-button qq" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-qq"></i> Q Q
+                        </a>   
+                        <!-- 邮箱联系按钮 -->
+                        <a href="mailto:your@email.com" class="social-button email" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-envelope"></i> Email
+                        </a> 
+						
+                        <div class="aboutinfo-contact">	<!-- 修复留言板样式 -->					
+                        </div>
+					</div>						
+                </div>
+            </div>
+    
+    <!-- 新版留言板 - 左右分栏 -->
+    <div class="guestbook-wrapper">
+        <div class="section-divider">
+            <span><i class="fas fa-comments"></i> 留言板</span>
+        </div>
+        
+        <div class="guestbook-container">
+            <!-- 左侧留言表单 -->
+            <div class="guestbook-form-container">
+                <form class="guestbook-form" id="guestbook-form">
+                    <h3><i class="fas fa-edit"></i> 给我留言</h3>
+                    
+                    <div class="form-group">
+                        <input type="text" id="gb-name" required 
+                               placeholder="您的昵称 *" minlength="2" maxlength="20">
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="gb-email" 
+                               placeholder="邮箱 (可选)">
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea id="gb-content" rows="5" required
+                                  placeholder="写下您的留言... *"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">
+                        <i class="fas fa-paper-plane"></i> 提交留言
+                    </button>
+                    
+                    <div class="form-notice">
+                        <i class="fas fa-info-circle"></i> 留言将通过本地存储保存，清缓即会消失➜
+
+                    </div>
+                </form>
+            </div>
+            
+            <!-- 右侧留言展示 -->
+            <div class="guestbook-display">
+                <div class="display-header">
+                    <h3><i class="fas fa-book-open"></i> 最新留言</h3>
+                    <div class="entry-count" id="entry-count">0条留言</div>
+                </div>
+                
+                <div class="entries-container" id="guestbook-entries">
+                    <div class="loading-entries">
+                        <i class="fas fa-spinner fa-spin"></i> 加载留言中...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>		
+        </main>
+        
+        <footer>
+            <!-- 页脚 -->
+            <p><img src="./icon/icp.png" alt="Logo" style="height: 20px; vertical-align: middle;">
+			 Copyright&nbsp;&copy;&nbsp;2002 - <span id="current-year">2025</span> Honge Hub - &nbsp;<a href="https://fontawesome.com/search?ip=classic&s=solid&o=r">iCon</a>&nbsp;&amp;&nbsp;
+                Made&nbsp;by&nbsp;<a href="http://vske.top:81/" target="_blank">©宏哥网络工作室</p>
+            <!-- 版权信息，年份由JavaScript动态更新 -->
+        </footer>
+    </div>
+    
+    <!-- JavaScript文件引入 -->
+    <script src="posts/posts-data.js"></script><!-- 文章数据脚本 -->
+    <script src="js/theme.js"></script><!-- 主题切换脚本 -->
+    <script src="js/script.js"></script><!-- 主脚本文件 -->
+</body>
+</html>

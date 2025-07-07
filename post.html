@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- 声明文档类型为HTML5 -->
+<html lang="zh-CN" data-theme="dark">
+<!-- 根元素，设置语言为简体中文，初始主题为dark(暗色) -->
+<head>
+    <!-- 文档头部，包含元数据和资源链接 -->
+    <meta charset="UTF-8"><!-- 设置字符编码为UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- 响应式视口设置，适配移动设备 -->
+    <title>Honge's Blog</title><!-- 页面标题 -->
+	<link rel="icon" href="icon/icon.png"><!-- 设置网站图标 -->
+    <link rel="stylesheet" href="css/style.css"><!-- 引入自定义样式表 -->	
+	<!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Highlight.js 代码高亮 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <!-- 可选：添加更多语言支持 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/sql.min.js"></script>
+</head>
+<body>
+    <!-- 文档主体内容 -->
+    <div class="container">
+        <!-- 主容器 -->
+    <div class="top-nav">
+    <!-- 顶部导航栏 -->
+    <nav>
+        <!-- 导航菜单 -->
+        <a href="index.html#home" class="active">主页</a>
+        <a href="index.html#timeline">时间轴</a>
+        <a href="index.html#categories">分类</a>
+        <a href="index.html#about">关于我</a>
+    </nav>
+    
+    <!-- 右侧功能区 -->
+    <div class="top-nav-right">
+        <!-- 搜索框 -->
+        <div class="search-box">
+            <input type="text" placeholder="搜索文章..." id="search-input">
+            <button id="search-button"><img src="icon/search-icon.png" alt="搜索"></button>
+        </div>
+        
+        <!-- 独立的主题切换按钮 -->
+        <button id="theme-toggle" class="theme-toggle">
+            <img src="icon/icon-dark.svg" alt="切换主题">
+        </button>
+       </div>
+     </div>    
+        
+        <div id="post-detail" class="post-detail">
+            <!-- 文章详情容器 -->
+            <div class="loading">加载文章...</div>
+            <!-- 加载状态提示 -->
+        </div>
+        
+        <footer>
+            <!-- 页脚 -->
+            <p><img src="./icon/icp.png" alt="Logo" style="height: 20px; vertical-align: middle;">
+			 Copyright&nbsp;&copy;&nbsp;2002 - <span id="current-year">2025</span> Honge Hub - &nbsp;<a href="https://icon-sets.iconify.design/">iCon</a>&nbsp;&amp;&nbsp;
+                Made&nbsp;by&nbsp;<a href="http://vske.top:81/" target="_blank">©宏哥网络工作室</p>
+            <!-- 版权信息，年份由JavaScript动态更新 -->
+        </footer>
+    </div>
+    
+    <!-- JavaScript文件引入 -->
+    <script src="posts/posts-data.js"></script><!-- 文章数据脚本 -->
+    <script src="js/theme.js"></script><!-- 主题切换脚本 -->
+    <script src="js/post.js"></script><!-- 文章详情页专用脚本 -->
+</body>
+</html>

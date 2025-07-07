@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honge's Downloads |</title>
+    <link rel="icon" href="icon/icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/downloads.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部导航栏 -->
+        <div class="top-nav">
+            <nav>
+                <a href="index.html#home">返回博客</a>
+                <a href="#software">软件工具</a>
+                <a href="#templates">设计模板</a>
+                <a href="#ebooks">电子书籍</a>
+            </nav>
+            <div class="top-nav-right">
+                <div class="search-box">
+                    <input type="text" placeholder="搜索资源..." id="downloads-search">
+                    <button id="downloads-search-btn"><img src="icon/search-icon.png" alt="搜索"></button>
+                </div>
+                <button id="theme-toggle" class="theme-toggle">
+                    <img src="icon/icon-dark.svg" alt="切换主题">
+                </button>
+            </div>
+        </div>
+
+        <!-- 下载页面头部 -->
+        <header class="downloads-header">
+            <h1><i class="fas fa-download"></i> Honge's Downloads</h1>
+            <p class="downloads-description">这里是我收集和整理的各种资源下载，包括软件工具、设计模板、电子书等</p>
+            <div class="download-stats">
+                <span><i class="fas fa-box-open"></i> 资源总数: <span id="total-count">0</span></span>
+                <span><i class="fas fa-download"></i> 总下载量: <span id="download-count">0</span></span>
+                <span><i class="fas fa-calendar-alt"></i> 最近更新: <span id="last-update">2023-10-15</span></span>
+            </div>
+        </header>
+
+        <!-- 下载主体 -->
+        <main class="downloads-main">
+            <!-- 资源分类 -->
+            <section id="software" class="download-section">
+                <h2 class="section-title"><i class="fas fa-laptop-code"></i> 软件工具</h2>
+                <div class="download-grid" id="software-grid">
+                    <!-- 软件资源将通过JavaScript动态加载 -->
+                    <div class="loading">加载中...</div>
+                </div>
+            </section>
+
+            <section id="templates" class="download-section">
+                <h2 class="section-title"><i class="fas fa-paint-brush"></i> 设计模板</h2>
+                <div class="download-grid" id="templates-grid">
+                    <!-- 设计模板将通过JavaScript动态加载 -->
+                    <div class="loading">加载中...</div>
+                </div>
+            </section>
+
+            <section id="ebooks" class="download-section">
+                <h2 class="section-title"><i class="fas fa-book-open"></i> 电子书籍</h2>
+                <div class="download-grid" id="ebooks-grid">
+                    <!-- 电子书将通过JavaScript动态加载 -->
+                    <div class="loading">加载中...</div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p><img src="./icon/icp.png" alt="Logo" style="height: 20px; vertical-align: middle;">
+            Copyright&nbsp;&copy;&nbsp;2002 - <span id="current-year">2025</span> Honge Hub - &nbsp;<a href="https://fontawesome.com/search?ip=classic&s=solid&o=r">iCon</a>&nbsp;&amp;&nbsp;
+            Made&nbsp;by&nbsp;<a href="http://vske.top:81/" target="_blank">©宏哥网络工作室</a></p>
+        </footer>
+    </div>
+
+    <!-- JavaScript 文件 -->
+    <script src="js/theme.js"></script>
+    <script src="js/downloads.js"></script>
+</body>
+</html>

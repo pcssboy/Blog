@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honge's Music</title>
+    <link rel="icon" href="icon/icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/music.css"> <!-- 增强版音乐播放器专用样式 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top-nav">
+            <nav>
+                <a href="index.html#home">主页</a>
+                <a href="index.html#timeline">时间轴</a>
+                <a href="index.html#categories">分类</a>
+                <a href="index.html#about">关于我</a>
+                <a href="music.html" class="active">音乐</a>
+            </nav>
+            
+            <div class="top-nav-right">
+                <div class="search-box">
+                    <input type="text" placeholder="搜索音乐..." id="music-search-input">
+                    <button id="music-search-button"><img src="icon/search-icon.png" alt="搜索"></button>
+                </div>
+                
+                <button id="theme-toggle" class="theme-toggle">
+                    <img src="icon/icon-dark.svg" alt="切换主题">
+                </button>
+            </div>
+        </div>
+        
+        <header class="profile-header">
+            <img src="icon/logo.png" alt="Honge头像" class="avatar">
+            <h1>Honge's Music</h1>
+            <div class="intro">
+                <span class="green-square">🟩</span> 欢迎来到我的音乐空间！这里收集了我喜爱的音乐和歌单，支持歌词显示和多种播放模式。
+            </div>
+        </header>
+        
+        <main>
+            <!-- 音乐播放器主区域 -->
+            <section class="music-player-section">
+                <h2 class="section-title">音乐播放器</h2>
+                
+                <!-- 播放器控制面板 -->
+                <div class="player-controls">
+                    <div class="player-info">
+                        <img id="current-track-cover" src="icon/music-default-cover.jpg" alt="专辑封面" class="track-cover">
+                        <div class="track-details">
+                            <h3 id="current-track-title">未选择歌曲</h3>
+                            <p id="current-track-artist">未知艺术家</p>
+                            <div class="track-progress">
+                                <span id="current-time">0:00</span>
+                                <input type="range" id="progress-bar" min="0" max="100" value="0">
+                                <span id="duration">0:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 歌词显示区域 -->
+                    <div class="lyrics-container">
+                        <div class="lyrics-header">
+                            <i class="fas fa-music"></i> 歌词
+                            <button id="toggle-lyrics" title="切换歌词显示"><i class="fas fa-exchange-alt"></i></button>
+                        </div>
+                        <div class="lyrics-content" id="lyrics-content">
+                            <p class="no-lyrics">暂无歌词</p>
+                        </div>
+                    </div>
+                    
+                    <div class="control-buttons">
+                        <button id="prev-btn" title="上一首"><i class="fas fa-backward"></i></button>
+                        <button id="play-btn" title="播放"><i class="fas fa-play"></i></button>
+                        <button id="next-btn" title="下一首"><i class="fas fa-forward"></i></button>
+                        <button id="repeat-btn" title="循环模式"><i class="fas fa-redo"></i></button>
+                        <button id="shuffle-btn" title="随机播放"><i class="fas fa-random"></i></button>
+                        <div class="volume-control">
+                            <button id="mute-btn" title="静音"><i class="fas fa-volume-up"></i></button>
+                            <input type="range" id="volume-bar" min="0" max="100" value="80">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 播放列表 -->
+                <div class="playlist-container">
+                    <h3 class="playlist-header">
+                        <i class="fas fa-list"></i> 播放列表
+                        <span id="playlist-count">0首歌曲</span>
+                    </h3>
+                    
+                    <div class="playlist-scroll">
+                        <ul id="playlist">
+                            <!-- 歌曲列表将通过JavaScript动态生成 -->
+                            <li class="loading">加载中...</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 歌单推荐 -->
+            <section class="music-playlists">
+                <h2 class="section-title">精选歌单</h2>
+                
+                <div class="playlist-grid">
+                    <!-- 最爱歌单 -->
+                    <div class="playlist-card" data-playlist-id="favorites">
+                        <div class="playlist-cover">
+                            <img src="icon/playlist-favorites.jpg" alt="最爱歌单">
+                            <div class="play-button"><i class="fas fa-play"></i></div>
+                            <div class="playlist-overlay">
+                                <span class="playlist-count">15首</span>
+                            </div>
+                        </div>
+                        <h3>我的最爱</h3>
+                        <p>精选收藏</p>
+                    </div>
+                    
+                    <!-- DJ舞曲歌单 -->
+                    <div class="playlist-card" data-playlist-id="dj">
+                        <div class="playlist-cover">
+                            <img src="icon/playlist-dj.jpg" alt="DJ舞曲">
+                            <div class="play-button"><i class="fas fa-play"></i></div>
+                            <div class="playlist-overlay">
+                                <span class="playlist-count">12首</span>
+                            </div>
+                        </div>
+                        <h3>DJ舞曲</h3>
+                        <p>动感节奏</p>
+                    </div>
+                    
+                    <!-- 轻音乐歌单 -->
+                    <div class="playlist-card" data-playlist-id="light">
+                        <div class="playlist-cover">
+                            <img src="icon/playlist-light.jpg" alt="轻音乐">
+                            <div class="play-button"><i class="fas fa-play"></i></div>
+                            <div class="playlist-overlay">
+                                <span class="playlist-count">10首</span>
+                            </div>
+                        </div>
+                        <h3>轻音乐</h3>
+                        <p>舒缓放松</p>
+                    </div>
+                    
+                    <!-- 运动歌单 -->
+                    <div class="playlist-card" data-playlist-id="workout">
+                        <div class="playlist-cover">
+                            <img src="icon/playlist-workout.jpg" alt="运动歌单">
+                            <div class="play-button"><i class="fas fa-play"></i></div>
+                            <div class="playlist-overlay">
+                                <span class="playlist-count">8首</span>
+                            </div>
+                        </div>
+                        <h3>运动能量</h3>
+                        <p>动力十足</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p><img src="./icon/icp.png" alt="Logo" style="height: 20px; vertical-align: middle;">
+            Copyright&nbsp;&copy;&nbsp;2002 - <span id="current-year">2025</span> Honge Hub - &nbsp;<a href="https://fontawesome.com/search?ip=classic&s=solid&o=r">iCon</a>&nbsp;&amp;&nbsp;
+            Made&nbsp;by&nbsp;<a href="http://vske.top:81/" target="_blank">©宏哥网络工作室</a></p>
+        </footer>
+    </div>
+    
+    <!-- JavaScript文件引入 -->
+    <script src="js/theme.js"></script>
+    <script src="posts/music-data.js"></script> <!-- 增强版音乐数据 -->
+    <script src="js/music-player.js"></script> <!-- 增强版音乐播放器逻辑 -->
+</body>
+</html>
