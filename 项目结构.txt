@@ -1,0 +1,123 @@
+
+项目名称：Honge's Blog 博客
+
+项目架构：
+holgers-blog/
+├── index.html          # 主页，包含博客、时间轴、分类和关于我
+├── post.html           # 文章详情页
+├── gallery.html        # 相册页面
+├── downloads.html      # 下载页面
+├──  music.html         # 音乐页面
+├── posts/ 
+│   ├── 101.md          # 文章ID内容
+│   ├── 102.md          # 文章ID内容
+│   ├── 103.md          # 文章ID内容
+├── css/
+│   ├── style.css       # 样式文件，包含主题变量和页面样式
+│   ├── gallery.css     # 相册专用样式
+│   ├── downloads.css   # 下载专用样式
+│   └── music.css       # 音乐专用样式
+├── lib/
+│   ├──marked.min.js    # Markdown渲染驱动
+│   ├──marked.min.js    # Markdown渲染驱动
+│   ├──marked.min.js    # Markdown渲染驱动
+│   ├──highlight.min.js # Markdown代码高亮，字体，特效的渲染驱动
+│   └──all.min.css      # Font Awesome图标库
+├── js/
+│   ├── script.js       # 主页逻辑代码，处理文章列表、搜索、时间轴、分类和导航
+│   ├── post.js         # 文章详情页逻辑代码，处理文章ID、同步加载内容、Markdown渲染HTML转换
+│   ├── theme.js        # 主题切换功能
+│   ├── gallery.js      # 相册脚本
+│   ├── downloads.js    # 下载脚本
+│   ├── music-player.js # 播放器脚本
+│   ├── music-data.js   # 音乐数据和数据操作函数
+│   ├── latency.js      # 网络V2EX通断检查，数据Ping值功能（#该功能代码已被删掉，后续进行优化处理）
+│   └── posts-data.js   # 文章数据和数据操作函数
+├── images/
+│   ├── article1.jpg      # 文章图片
+│   ├── article2.jpg      # 文章图片
+│   ├── article3.jpg      # 文章图片
+│   ├── article1-2.jpg    # 文章内容引用图片
+│   ├── article1-2-3.jpg  # 文章内容链接图片
+│   └── gallery/          # 个人相册目录 
+├── icon/
+│   ├── logo.png          # 头像
+│   ├── lcon.png          # 网页小图标
+│   ├── lcp.png           # 网警备案图标
+│   ├── icon-dark.svg     # 暗色主题图标
+│   ├── icon-light.svg    # 亮色主题图标
+│   ├── icon/search-icon.png  # 搜索图标
+│   ├── icon-light.svg    # 亮色主题图标
+│   └── icon-qq.jpg       # QQ互联图标
+├── music/                # 歌曲资源库
+└── downloads/            # 下载资源库
+
+	
+	
+添加文章或修改内容：
+（1）编辑js/posts-data.js中的const posts = [类目];编辑类目来修改或添加文章
+（2）每个文章对象包含代码标识的意义：
+
+     id: '唯一标识',
+     title: '标题',
+     date: 'YYYY-MM-DD',
+     meta: '分类',
+     category: '识别分类',
+     length: '字数统计',
+     tags: ['标签1', '标签2'],
+     content: `自定义Markdown格式内容`
+
+（3）注释：-----------------------------------------------------------------------------------------
+
+        id: '101',                            // 文章ID ，对应posts/xxx.md文件
+		
+        title: 'Google',                      // 文章标题
+        date: '2022-08-15',                   // 文章日期
+		
+        meta: '技术分享',                     // 文章分类
+        category: 'tech',                     // 文章分类
+		
+        meta: '资源下载',
+        category: 'downloads', 		
+		
+        meta: '语言学习',
+        category: 'language',
+
+        meta: '科技新闻',
+        category: 'news',
+		
+        length: '1200字 3分钟',                // 阅读时长	
+        length: '15.2MB 安装包',               // 安装包容量		
+		
+        tags: ['minecraft', 'dns', 'debug'],   // 文章标签		
+        image: 'images/BilldDesk/xxx.jpg',     // 封面图片		
+        content: '在线远程：<p>客户端下载：</p><p>问题反馈：</p>' // 文章自定义封面内容（格式前后有单引号: 'xxx' ），否则填写：// 内容从xxxID.md加载
+
+（4）列例-----------------------------------------------------------------------------------------------
+
+    {
+        id: '文章ID ',  
+        title: '文章标题', 
+        date: '2022-08-15',
+		
+        meta: '文章分类',
+        category: 'tech',
+		
+        length: '1200字 3分钟',
+		
+        tags: ['minecraft', 'dns', 'debug', 'debug', 'debug'],
+        image: 'images/article1.png',
+		
+        content: '在线远程：<p>客户端下载：</p><p>问题反馈：</p>'
+    },
+	
+==========================================================================
+<!-- Keep these links. Translations will automatically update with the README. -->
+[德语Deutsch](https://www.readme-i18n.com/Shubhamsaboo/awesome-llm-apps?lang=de) | 
+[西班牙Español](https://www.readme-i18n.com/Shubhamsaboo/awesome-llm-apps?lang=es) | 
+[法语français](https://www.readme-i18n.com/Shubhamsaboo/awesome-llm-apps?lang=fr) | 
+[日本語](https://www.readme-i18n.com/Shubhamsaboo/awesome-llm-apps?lang=ja) | 
+[한국어](https://www.readme-i18n.com/Shubhamsaboo/awesome-llm-apps?lang=ko) | 
+[葡萄牙Português](https://www.readme-i18n.com/Shubhamsaboo/awesome-llm-apps?lang=pt) | 
+[俄罗斯Русский](https://www.readme-i18n.com/Shubhamsaboo/awesome-llm-apps?lang=ru) | 
+[中文](https://www.readme-i18n.com/Shubhamsaboo/awesome-llm-apps?lang=zh)

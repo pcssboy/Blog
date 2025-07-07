@@ -1,0 +1,635 @@
+/* 增强版音乐播放器专用样式表 */
+
+/* ======================
+   音乐播放器主区域
+   ====================== */
+.music-player-section {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    margin-bottom: 40px;
+    box-shadow: var(--box-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 添加渐变背景装饰 */
+.music-player-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(var(--primary-rgb), 0.1) 0%, transparent 70%);
+    z-index: 0;
+}
+
+/* 播放器控制面板 */
+.player-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+/* 播放器信息区域（封面+歌曲信息） */
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* 歌曲封面 - 添加旋转动画和阴影效果 */
+.track-cover {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s ease;
+    animation: coverRotate 20s linear infinite;
+    animation-play-state: paused;
+}
+
+/* 播放时封面旋转动画 */
+.playing .track-cover {
+    animation-play-state: running;
+}
+
+@keyframes coverRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 歌曲详情区域 */
+.track-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.track-details h3 {
+    margin: 0 0 8px;
+    color: var(--primary-color);
+    font-size: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.track-details p {
+    margin: 0;
+    color: var(--dark-gray);
+    font-size: 15px;
+}
+
+/* 进度条容器 */
+.track-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+/* 进度条样式 */
+#progress-bar {
+    flex: 1;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--light-gray);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 进度条填充部分 */
+#progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: -100vw 0 0 100vw var(--primary-color);
+    position: relative;
+    z-index: 1;
+}
+
+/* 时间显示 */
+.track-progress span {
+    font-size: 13px;
+    color: var(--dark-gray);
+    min-width: 40px;
+    text-align: center;
+}
+
+/* ======================
+   歌词显示区域
+   ====================== */
+.lyrics-container {
+    background-color: rgba(var(--primary-rgb), 0.05);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-top: 20px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.lyrics-container:hover {
+    background-color: rgba(var(--primary-rgb), 0.1);
+}
+
+.lyrics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.lyrics-header i {
+    margin-right: 8px;
+}
+
+#toggle-lyrics {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+#toggle-lyrics:hover {
+    color: var(--primary-color);
+    transform: rotate(90deg);
+}
+
+.lyrics-content {
+    height: 200px;
+    overflow-y: auto;
+    text-align: center;
+    padding: 10px;
+    scroll-behavior: smooth;
+}
+
+.lyrics-content p {
+    margin: 15px 0;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.lyrics-content p.active {
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.no-lyrics {
+    color: var(--dark-gray);
+    font-style: italic;
+    margin-top: 50px;
+}
+
+/* ======================
+   控制按钮区域
+   ====================== */
+.control-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+/* 控制按钮基础样式 */
+.control-buttons button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 22px;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 50%;
+    transition: all 0.2s;
+    position: relative;
+}
+
+/* 播放/暂停按钮特殊样式 */
+#play-btn {
+    background-color: var(--primary-color);
+    color: white;
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+    box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.4);
+}
+
+/* 按钮悬停效果 */
+.control-buttons button:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+#play-btn:hover {
+    background-color: var(--primary-color);
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+/* 按钮激活状态 */
+.control-buttons button.active {
+    color: var(--primary-color);
+}
+
+/* 音量控制 */
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 15px;
+}
+
+#volume-bar {
+    width: 90px;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--light-gray);
+    border-radius: 2px;
+    outline: none;
+}
+
+#volume-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* ======================
+   播放列表样式
+   ====================== */
+.playlist-container {
+    background-color: var(--light-gray);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+/* 播放列表头部 */
+.playlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    margin: 0;
+    background-color: var(--medium-gray);
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+.playlist-header i {
+    margin-right: 10px;
+}
+
+#playlist-count {
+    font-size: 14px;
+    color: var(--dark-gray);
+}
+
+/* 播放列表滚动区域 */
+.playlist-scroll {
+    max-height: 400px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--light-gray);
+}
+
+/* 自定义滚动条 */
+.playlist-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.playlist-scroll::-webkit-scrollbar-track {
+    background: var(--light-gray);
+}
+
+.playlist-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+/* 播放列表 */
+#playlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 播放列表项 */
+#playlist li {
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+
+#playlist li:last-child {
+    border-bottom: none;
+}
+
+#playlist li:hover {
+    background-color: var(--hover-color);
+}
+
+/* 当前播放的歌曲 */
+#playlist li.playing {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* 歌曲封面（列表中的小图） */
+#playlist li img {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* 歌曲信息 */
+#playlist li .song-info {
+    flex: 1;
+    min-width: 0;
+}
+
+#playlist li .song-info h4 {
+    margin: 0 0 5px;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#playlist li .song-info p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--dark-gray);
+}
+
+#playlist li.playing .song-info p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 歌曲时长 */
+#playlist li .song-duration {
+    font-size: 13px;
+    color: var(--dark-gray);
+    margin-left: 10px;
+    flex-shrink: 0;
+}
+
+#playlist li.playing .song-duration {
+    color: white;
+}
+
+/* 当前播放指示器 */
+#playlist li.playing::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: white;
+}
+
+/* ======================
+   歌单推荐区域
+   ====================== */
+.music-playlists {
+    margin-top: 40px;
+}
+
+/* 歌单网格布局 */
+.playlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 25px;
+}
+
+/* 歌单卡片 */
+.playlist-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: var(--box-shadow);
+    position: relative;
+}
+
+.playlist-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* 歌单封面容器 */
+.playlist-cover {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.playlist-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.playlist-card:hover .playlist-cover img {
+    transform: scale(1.1);
+}
+
+/* 播放按钮（覆盖在封面上） */
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 2;
+}
+
+.playlist-card:hover .play-button {
+    opacity: 1;
+}
+
+.play-button i {
+    color: white;
+    font-size: 24px;
+    margin-left: 5px;
+}
+
+/* 歌单覆盖层（显示歌曲数量） */
+.playlist-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: white;
+    text-align: right;
+    font-size: 12px;
+    z-index: 1;
+}
+
+.playlist-count {
+    background-color: rgba(0,0,0,0.5);
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+
+/* 歌单信息 */
+.playlist-card h3 {
+    margin: 15px 15px 5px;
+    font-size: 17px;
+    color: var(--primary-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playlist-card p {
+    margin: 0 15px 15px;
+    font-size: 14px;
+    color: var(--dark-gray);
+}
+
+/* ======================
+   响应式设计
+   ====================== */
+@media (max-width: 900px) {
+    .player-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .track-cover {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .track-details {
+        width: 100%;
+    }
+    
+    .track-progress {
+        margin-top: 20px;
+    }
+    
+    .control-buttons {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .volume-control {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    #volume-bar {
+        width: 120px;
+    }
+}
+
+@media (max-width: 600px) {
+    .playlist-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .playlist-cover {
+        height: 160px;
+    }
+    
+    #playlist li {
+        padding: 12px 15px;
+        gap: 15px;
+    }
+    
+    #playlist li img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .lyrics-content {
+        height: 150px;
+    }
+}
+
+/* ======================
+   动画效果
+   ====================== */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* 播放时脉冲效果 */
+.playing #play-btn {
+    animation: pulse 1.5s infinite;
+}
+
+/* 加载动画 */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.loading::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
